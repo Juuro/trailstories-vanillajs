@@ -1,3 +1,5 @@
+import fetch from 'node-fetch'
+
 exports.handler = async function(event, context) {
   const url = `${process.env.GHOST_API_URL}posts/?key=${process.env.GHOST_API_KEY}&include=tags`
 
