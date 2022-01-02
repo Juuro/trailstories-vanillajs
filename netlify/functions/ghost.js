@@ -1,11 +1,15 @@
-import fetch from 'node-fetch';
+import fetch from 'node-fetch'
 
 exports.handler = async function(event, context) {
-  const url = `${process.env.GHOST_API_URL}posts/?key=${process.env.GHOST_API_KEY}&include=tags`
+  let url = ""
 
+  console.log('Hello!')
 
   if (event.queryStringParameters.slug) {
-
+    url = `${process.env.GHOST_API_URL}posts/slug${event.queryStringParameters.slug}?key=${process.env.GHOST_API_KEY}&include=tags`
+  }
+  else {
+    url = `${process.env.GHOST_API_URL}posts/?key=${process.env.GHOST_API_KEY}&include=tags`
   }
 
   const options = {
