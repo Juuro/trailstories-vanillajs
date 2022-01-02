@@ -12,7 +12,7 @@ export const loadPosts = async () => {
     }
   }
 
-  const moep = await fetch('../../.netlify/functions/ghost?slug=jhgfd-kjhgfd')
+  const moep = await fetch('../../.netlify/functions/ghost')
   .then(response => {
     return response.json()
   })
