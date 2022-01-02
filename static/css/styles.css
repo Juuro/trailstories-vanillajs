@@ -1,0 +1,137 @@
+:root {
+  /* Color palette: https://coolors.co/1c4442-78f9a0-ff5e5b-cd4c4a-f4f3ee-1e91d6 */
+  --dark-turquoise: #1c4442;
+  --light-green: #78f9a0;
+  --pastel-red: #ff5e5b;
+  /* #dd6c5a */
+  --wine-red: #cd4c4a;
+  /* #684551 */
+  --text-color: #f4f3ee;
+  --text-color-hover: var(--wine-red); /* 4E2086 */
+  /* #EFECCA #fff */
+  --bike-post-color: #1e91d6;
+}
+
+html {
+  padding: 0;
+}
+
+body {
+  background-color: var(--dark-turquoise);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+    'SF Pro Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-size: 18px;
+}
+
+body > main {
+  max-width: 700px;
+  margin: 3em auto;
+  min-width: 400px;
+}
+
+header {
+  height: 150px;
+}
+
+header .conifers {
+  transform: rotate(180deg);
+}
+
+h1 {
+  color: var(--light-green);
+  font-size: 5em;
+  text-align: center;
+  margin: 0;
+}
+
+h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h2 {
+  color: var(--light-green);
+}
+
+h3 {
+  color: var(--text-color);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 4em;
+}
+
+article {
+  background-color: var(--pastel-red);
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 3em auto;
+  min-width: 400px;
+  width: 50vw;
+  transform: skew(0, -3deg);
+  transition: box-shadow .2s;
+}
+
+article.custom-bike-post {
+  box-shadow: -1em 1em var(--bike-post-color);
+}
+
+article:hover {
+  box-shadow: 0 0px 19px 0 var(--wine-red);
+}
+
+article img {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+article .text {
+  padding: 1em 1.5em;
+}
+
+article h2 {
+  color: var(--text-color);
+  font-size: 2.5em;
+  margin: 0em 0 0;
+}
+
+article h2 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.1s;
+}
+
+article h2 a:hover {
+  color: var(--text-color-hover);
+}
+
+article .meta {
+  color: var(--wine-red);
+  font-size: 0.8em;
+  display: flex;
+}
+
+article .meta span {
+  flex-grow: 1;
+}
+
+article .meta span:last-child {
+  text-align: right;
+}
+
+article main {
+  margin: 1em 0;
+}
+
+footer {
+  background-color: var(--light-green);
+  color: var(--dark-turquoise);
+  padding: 3em 1em;
+  text-align: center;
+}
+
+footer a {
+  color: var(--dark-turquoise);
+  font-weight: bold;
+}
