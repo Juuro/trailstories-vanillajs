@@ -1,9 +1,11 @@
 export const loadPosts = async () => {
   return await fetch('../../.netlify/functions/ghost')
     .then(response => {
+      console.log('response: ', response)
       return response.json()
     })
     .then(data => {
+      console.log('data: ', data)
       localStorage.setItem('data', JSON.stringify(data))
       return data
     })
