@@ -12,7 +12,6 @@ export const router = async () => {
   ]
 
   const potentialMatches = routes.map(route => {
-    console.log(location.pathname)
     return {
       route: route, 
       isMatch: location.pathname === route.path
