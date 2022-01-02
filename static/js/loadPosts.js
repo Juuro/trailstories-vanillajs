@@ -1,7 +1,6 @@
 export const loadPosts = async () => {
   return await fetch('../../.netlify/functions/ghost')
     .then(response => {
-      console.log('response: ', response)
       return response.json()
     })
     .then(data => {
