@@ -4,6 +4,7 @@ import Imprint from "./views/Imprint.js"
 import Post from "./views/Post.js"
 
 export const router = async () => {
+  console.log('Router')
   const routes = [
     {path: "/", view: Home},
     {path: "/about", view: About},
