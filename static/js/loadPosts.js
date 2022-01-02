@@ -1,10 +1,18 @@
-export const loadPosts = async () => {
-  return await fetch('../../.netlify/functions/ghost')
+export const loadPosts = async (slug) => {
+  let url = ""
+
+  if (slug) {
+    url = `../../.netlify/functions/ghost?slug=${slug}`
+  }
+  else {
+    url = `../../.netlify/functions/ghost`
+  }
+
+  return await fetch(url)
     .then(response => {
       return response.json()
     })
     .then(data => {
-      console.log('data: ', data)
       localStorage.setItem('data', JSON.stringify(data))
       return data
     })

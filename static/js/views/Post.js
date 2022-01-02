@@ -1,4 +1,4 @@
-import { loadPost } from "../loadPost.js";
+import { loadPosts } from "../loadPosts.js";
 import { formatDate, readingTime, tags } from '../utilities.js'
 import AbstractView from "./AbstractView.js";
 
@@ -9,7 +9,7 @@ export default class extends AbstractView {
   }
 
   getHtml = async () => {
-    const { posts } = await loadPost(window.location.pathname)
+    const { posts } = await loadPosts(window.location.pathname)
     let postPage = ''
 
     posts.forEach((post) => {
