@@ -1,5 +1,5 @@
 import { loadPosts } from '../loadPosts.js'
-import { formatDate, readingTime, tags } from '../utilities.js'
+import { formatDate, readingTime, tags, getFeatureImage } from '../utilities.js'
 import AbstractView from './AbstractView.js'
 
 export default class extends AbstractView {
@@ -15,9 +15,7 @@ export default class extends AbstractView {
     posts.forEach((post) => {
       postPage = postPage.concat(`
         <article class="${post.custom_template ? post.custom_template : ""}">
-          <a href="${post.slug}" data-link>
-            <img src="${post.feature_image}" alt="" width="700" height="300">
-          </a>
+          ${getFeatureImage(post)}
           <div class="text">
             <h2>
               <a href="${post.slug}" data-link>${post.title}</a>
