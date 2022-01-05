@@ -1,51 +1,64 @@
-self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open('v1').then(function(cache) {
-      return cache.addAll([
-        '/conifers2.svg',
-        '/index.html',
-        '/static/css/styles.css',
-        '/static/js/app.js',
-        '/static/js/loadPosts.js',
-        '/static/js/router.js',
-        '/static/js/utilities.js',
-        '/static/js/views/About.js',
-        '/static/js/views/AbstractView.js',
-        '/static/js/views/Home.js',
-        '/static/js/views/Imprint.js',
-        '/static/js/views/Post.js',
-        '/static/js/components/Tag.js'      ])
-    })
-  )
+const CACHE_NAME = 'v1'
+
+const CACHED_URLS = [
+  '/',
+  '/conifers2.svg',
+  '/index.html',
+  '/static/css/styles.css',
+  '/static/js/app.js',
+  '/static/js/loadPosts.js',
+  '/static/js/router.js',
+  '/static/js/utilities.js',
+  '/static/js/views/About.js',
+  '/static/js/views/AbstractView.js',
+  '/static/js/views/Home.js',
+  '/static/js/views/Imprint.js',
+  '/static/js/views/Post.js',
+  '/static/js/components/Tag.js'
+]
+
+// Open cache on install.
+self.addEventListener('install', event => {
+  event.waitUntil(async function () {
+    const cache = await caches.open(CACHE_NAME)
+
+    await cache.addAll(CACHED_URLS)
+  }())
 })
 
-self.addEventListener('activate', (event) => {
-  var cacheKeeplist = ['v1']
+// Cache and update with stale-while-revalidate policy.
+self.addEventListener('fetch', event => {
+  const { request } = event
 
-  event.waitUntil(
-    caches.keys().then((keyList) => {
-      return Promise.all(keyList.map((key) => {
-        if (cacheKeeplist.indexOf(key) === -1) {
-          return caches.delete(key)
-        }
-      }))
-    })
-  )
-})
+  event.respondWith(async function () {
+    const cache = await caches.open(CACHE_NAME)
 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(caches.match(event.request).then(function(response) {
-    if (response !== undefined) {
-      return response;
-    } else {
-      return fetch(event.request).then(function (response) {
-        let responseClone = response.clone()
-        
-        caches.open('v1').then(function (cache) {
-          cache.put(event.request, responseClone)
-        })
-        return response
-      })
+    const cachedResponsePromise = await cache.match(request)
+    const networkResponsePromise = fetch(request)
+
+    if (request.url.startsWith(self.location.origin)) {
+      event.waitUntil(async function () {
+        const networkResponse = await networkResponsePromise
+
+        await cache.put(request, networkResponse.clone())
+      }())
     }
-  }))
+
+    return cachedResponsePromise || networkResponsePromise
+  }())
+})
+
+// Clean up caches other than current.
+self.addEventListener('activate', event => {
+  event.waitUntil(async function () {
+    const cacheNames = await caches.keys()
+
+    await Promise.all(
+      cacheNames.filter((cacheName) => {
+        const deleteThisCache = cacheName !== CACHE_NAME
+
+        return deleteThisCache
+      }).map(cacheName => caches.delete(cacheName))
+    )
+  }())
 })
