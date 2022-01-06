@@ -14,7 +14,9 @@ export default class extends AbstractView {
     const tag = path.replace(/^\/tag\//, '')
 
     const { posts } = await loadPosts({tag})
-    let postPage = ''
+    let postPage = `<div class="tag-page-title">Posts with <tag-item href="/tag/${tag}" name="${tag}"></tag-item></div>`
+
+    this.setTitle(`${tag} – TrailStories`)
 
     posts?.forEach((post) => {
       postPage = postPage.concat(`

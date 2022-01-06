@@ -135,3 +135,17 @@ footer a {
   color: var(--dark-turquoise);
   font-weight: bold;
 }
+
+.tag-page-title {
+  color: var(--text-color);
+  text-align: center;
+}
+
+.tag-page-title tag-item {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+.tag-page-title tag-item {
+  opacity: 1;
+}

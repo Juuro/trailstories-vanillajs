@@ -4,7 +4,6 @@ export class Tag extends HTMLElement {
 
     const shadow = this.attachShadow({mode: 'open'})
 
-    const wrapper = document.createElement('span')
     const link = document.createElement('a')
     const hyperlink = this.getAttribute('href')
     link.setAttribute('href', hyperlink)
@@ -14,9 +13,18 @@ export class Tag extends HTMLElement {
 
     const style = document.createElement('style')
     style.textContent = `
-      a {
+      :host {
         font-size: 0.6rem;
         opacity: 0.4;
+        transition: opacity 0.2s;
+      }  
+      
+      :host(:hover) {
+        opacity: 1;
+      }
+
+      a {
+        font-size: 1em;
         background-color: var(--text-color);
         padding: 0.1em 0.4em;
         color: var(--pastel-red);
@@ -24,18 +32,12 @@ export class Tag extends HTMLElement {
         text-transform: uppercase;
         margin-right: 0.5em;
         border-radius: 0.2em;
-        transition: opacity 0.2s;
         letter-spacing: 0.05em;
-      }
-      
-      a:hover {
-        opacity: 1;
       }
     `
 
     shadow.appendChild(style)
-    shadow.appendChild(wrapper)
-    wrapper.appendChild(link)
+    shadow.appendChild(link)
   }
 }
 
