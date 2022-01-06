@@ -9,10 +9,11 @@ export default class extends AbstractView {
   }
 
   getHtml = async () => {
-    const { posts } = await loadPosts(window.location.pathname)
+    const { posts } = await loadPosts({slug: window.location.pathname})
     let postPage = ''
 
-    posts.forEach((post) => {
+    posts?.forEach((post) => {
+      this.setTitle(`${post.title} – TrailStories`)
       postPage = postPage.concat(`
         <article class="${post.custom_template}">
           ${getFeatureImage(post)}

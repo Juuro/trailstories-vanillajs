@@ -1,15 +1,19 @@
-import { loadPosts } from '../loadPosts.js'
+import { loadPosts } from "../loadPosts.js";
 import { formatDate, readingTime, tags, getFeatureImage } from '../utilities.js'
-import AbstractView from './AbstractView.js'
+import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
   constructor() {
     super()
-    this.setTitle('TrailStories')
+    this.setTitle("TrailStories")
   }
 
   getHtml = async () => {
-    const { posts } = await loadPosts()
+
+    const path = window.location.pathname
+    const tag = path.replace(/^\/tag\//, '')
+
+    const { posts } = await loadPosts({tag})
     let postPage = ''
 
     posts?.forEach((post) => {

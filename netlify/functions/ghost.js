@@ -6,6 +6,9 @@ exports.handler = async function(event, context) {
   if (event.queryStringParameters.slug) {
     url = `${process.env.GHOST_API_URL}posts/slug${event.queryStringParameters.slug}?key=${process.env.GHOST_API_KEY}&include=tags`
   }
+  else if (event.queryStringParameters.tag) {
+    url = `${process.env.GHOST_API_URL}posts/?key=${process.env.GHOST_API_KEY}&filter=tag:${event.queryStringParameters.tag}&include=tags`
+  }
   else {
     url = `${process.env.GHOST_API_URL}posts/?key=${process.env.GHOST_API_KEY}&include=tags`
   }

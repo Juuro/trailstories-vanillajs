@@ -1,8 +1,11 @@
-export const loadPosts = async (slug) => {
+export const loadPosts = async (options) => {
   let url = ""
 
-  if (slug) {
-    url = `../../.netlify/functions/ghost?slug=${slug}`
+  if (options?.slug) {
+    url = `../../.netlify/functions/ghost?slug=${options.slug}`
+  }
+  else if (options?.tag) {
+    url = `../../.netlify/functions/ghost?tag=${options.tag}`
   }
   else {
     url = `../../.netlify/functions/ghost`
