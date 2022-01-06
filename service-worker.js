@@ -36,9 +36,6 @@ self.addEventListener('fetch', event => {
     const cachedResponsePromise = await cache.match(request)
     const networkResponsePromise = fetch(request)
 
-    console.log('self.location.origin: ', self.location.origin)
-    console.log('request.url: ', request.url)
-
     if (request.url.startsWith(self.location.origin)) {
       event.waitUntil(async function () {
         const networkResponse = await networkResponsePromise

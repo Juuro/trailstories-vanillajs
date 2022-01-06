@@ -4,7 +4,6 @@ import Imprint from "./views/Imprint.js"
 import Post from "./views/Post.js"
 
 export const router = async () => {
-  console.log('Router')
   const routes = [
     {path: "/", view: Home},
     {path: "/about", view: About},
@@ -20,8 +19,6 @@ export const router = async () => {
   })
 
   let match = potentialMatches.find(potentialMatch => potentialMatch.isMatch)
-
-  console.log(match)
 
   // TODO: Tries to load a post also when you try to load a URL/slug that doesn't exist. Fix it by loading an 404 page if the coresponding post doesn't exist.
   if (!match) {
