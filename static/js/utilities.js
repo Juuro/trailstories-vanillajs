@@ -27,7 +27,7 @@ export const getFeatureImage = post => {
   if (post.feature_image) {
     return `
     <a href="/${post.slug}" data-link>
-      <img src="${post.feature_image}" alt="" width="700" height="300">
+      <img src="${post.feature_image}" alt="${post.title}" width="700" height="300">
     </a>
     `
   }

@@ -36,16 +36,13 @@ export const router = async () => {
     <article class="article-placeholder">
       <div class="text">
         <h2>
-          <a href="season-start" data-link="">       </a>
+          <a href="season-start" data-link=""></a>
         </h2>
         <div class="meta">
-          <span class="date">       </span>
-          <span class="reading-time">       </span>
+          <span class="date"></span>
+          <span class="reading-time"></span>
         </div>
-        <main>       </main>
-        <div class="tags">
-          <tag-item href="/tag/training" name=""></tag-item>
-        </div>
+        <main></main>
       </div>
     </div>
   `

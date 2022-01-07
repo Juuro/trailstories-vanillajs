@@ -82,14 +82,16 @@ h2 {
   color: var(--light-green);
 }
 
-h3 {
+h2.subtitle {
   color: var(--text-color);
-}
-
-h3.subtitle {
+  font-size: 1.17em;
   font-weight: 300;
   margin: 1em 1rem clamp(2em, 8vw + 1rem, 4em);
   text-align: center;
+}
+
+h3 {
+  color: var(--text-color);
 }
 
 article {
