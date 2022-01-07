@@ -10,6 +10,8 @@
   --text-color-hover: var(--wine-red); /* 4E2086 */
   /* #EFECCA #fff */
   --bike-post-color: #1e91d6;
+
+  --max-width: 700px;
 }
 
 html {
@@ -25,24 +27,48 @@ body {
 }
 
 body > main {
-  max-width: 700px;
+  max-width: var(--max-width);
   margin: 3em auto;
-  min-width: 400px;
 }
 
 header {
-  height: 150px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 header .conifers {
   transform: rotate(180deg);
+  max-width: 50vw;
+}
+
+header nav {
+  font-weight: bold;
+  max-width: var(--max-width);
+  text-align: right;
+}
+
+header nav a {
+  border-radius: 0.2em;
+  color: var(--text-color);
+  letter-spacing: 0.05em;
+  margin-right: 0.5em;
+  padding: 0.1em 0.4em;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+header nav a:hover {
+  background-color: #f4f3ee70;
 }
 
 h1 {
   color: var(--light-green);
-  font-size: 5em;
+  font-size: clamp(3rem, 8vw + 1rem, 6rem);
   text-align: center;
-  margin: 0;
+  margin: 0 1rem 0;
 }
 
 h1 a {
@@ -56,18 +82,19 @@ h2 {
 
 h3 {
   color: var(--text-color);
+}
+
+h3.subtitle {
   font-weight: 300;
+  margin: 1em 1rem clamp(2em, 8vw + 1rem, 4em);
   text-align: center;
-  margin-bottom: 4em;
 }
 
 article {
   background-color: var(--pastel-red);
   color: var(--text-color);
-  max-width: 700px;
   margin: 3em auto;
-  min-width: 400px;
-  width: 50vw;
+  width: 100%;
   transform: skew(0, -3deg);
   transition: box-shadow .2s;
 }
