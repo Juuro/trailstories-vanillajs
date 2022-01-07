@@ -42,6 +42,8 @@ header {
 header .conifers {
   transform: rotate(180deg);
   max-width: 50vw;
+  left: -90px;
+  position: relative;
 }
 
 header nav {
