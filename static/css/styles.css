@@ -101,6 +101,22 @@ article {
   transition: box-shadow .2s;
 }
 
+article.article-placeholder {
+  border-radius: 0.2em;
+  animation: pulse 1.5s infinite ease-out;
+}
+
+@keyframes pulse {
+  0% {
+  }
+  50% {
+    filter: blur(0.2em);
+    opacity: 0.8;
+  }
+  100% {
+  }
+}
+
 article.custom-bike-post {
   box-shadow: -1em 1em var(--bike-post-color);
 }
