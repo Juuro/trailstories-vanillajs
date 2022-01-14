@@ -11,6 +11,10 @@ export const loadPosts = async (options) => {
     url = `../../.netlify/functions/ghost`
   }
 
+  if (options?.page) {
+    url += `&page=${options.page}`
+  }
+
   return await fetch(url)
     .then(response => {
       return response.json()

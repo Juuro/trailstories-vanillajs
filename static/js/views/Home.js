@@ -9,8 +9,10 @@ export default class extends AbstractView {
   }
 
   getHtml = async () => {
-    const { posts } = await loadPosts()
+    const { posts, meta } = await loadPosts()
     let postPage = ''
+
+    console.log('meta: ', meta)
 
     posts?.forEach((post) => {
       postPage = postPage.concat(`
@@ -30,6 +32,13 @@ export default class extends AbstractView {
         </article>
       `)
     })
+
+    postPage = postPage.concat(`
+      <div class="pagination">
+        ${meta.pagination.prev ? `<a href="${meta.pagination.prev}" data-link>Previous</a>` : ""}
+        ${meta.pagination.next ? `<a href="${meta.pagination.next}" data-link>Next</a>` : ""}
+      </div>
+    `)
 
     return postPage
   }
