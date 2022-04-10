@@ -1,14 +1,24 @@
-import AbstractView from "./AbstractView.js";
-
-export default class extends AbstractView {
+export class Imprint extends HTMLElement {
   constructor() {
     super()
-    this.setTitle("Imprint")
-  }
 
-  async getHtml() {
-    return `
+    document.title = "Imprint"
+    this.template = document.createElement('template')
+    this.template.innerHTML = `
+      <style>
+      h2 {
+        color: var(--light-green);
+      }
+      </style>
+      
       <h2>Imprint</h2>
     `
   }
+
+  connectedCallback() {
+    this.attachShadow({ mode: 'open' })
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true))
+  }
 }
+
+customElements.define('imprint-view', Imprint)

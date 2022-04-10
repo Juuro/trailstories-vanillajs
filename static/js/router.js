@@ -1,14 +1,14 @@
-import About from "./views/about.js"
+import { About } from "./views/about.js"
 import Home from "./views/Home.js"
-import Imprint from "./views/Imprint.js"
+import { Imprint } from "./views/Imprint.js"
 import Post from "./views/Post.js"
 import Tag from "./views/Tag.js"
 
 export const router = async () => {
   const routes = [
     {path: "/", view: Home},
-    {path: "/about", view: About},
-    {path: "/imprint", view: Imprint},
+    {path: "/about", view: 'about-view'},
+    {path: "/imprint", view: 'imprint-view'},
     {path: "/tag", view: Tag},
     {path: "", view: Post},
   ]
@@ -30,7 +30,7 @@ export const router = async () => {
     }
   }
 
-  const view = new match.route.view()
+  const view = match.route.view
 
   document.querySelector("main").innerHTML = `
     <article class="article-placeholder">
@@ -46,5 +46,7 @@ export const router = async () => {
       </div>
     </div>
   `
-  document.querySelector("main").innerHTML = await view.getHtml()
+  // document.querySelector("main").innerHTML = await view.getHtml()
+  console.log(view)
+  document.querySelector("main").innerHTML = document.createElement(view).outerHTML
 }
