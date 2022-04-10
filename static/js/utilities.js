@@ -11,6 +11,7 @@ export const readingTime = (time) => {
   return `${time} ${text}`
 }
 
+// TODO: Replace with a Tags component
 export const tags = (post) => {
   let tags = ""
 
