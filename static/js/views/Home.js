@@ -9,6 +9,15 @@ export class Home extends HTMLElement {
     this.template = document.createElement('template')
     this.template.innerHTML = `
       <style>
+      a {
+        color: #78f9a0;
+        transition: color .2s;
+      }
+      
+      a:hover {
+        color: #1c4442;
+      }
+      
       article {
         background-color: var(--pastel-red);
         color: var(--text-color);
@@ -112,11 +121,11 @@ export class Home extends HTMLElement {
   }
 
   async connectedCallback() {
-    const moep = await this.createPostsDom()
-    this.html = document.createElement('template')
-    this.html.innerHTML = moep
+    const postsDom = await this.createPostsDom()
+    this.postsDomTemplate = document.createElement('template')
+    this.postsDomTemplate.innerHTML = postsDom
     this.shadowRoot.appendChild(this.template.content.cloneNode(true))
-    this.shadowRoot.appendChild(this.html.content.cloneNode(true))
+    this.shadowRoot.appendChild(this.postsDomTemplate.content.cloneNode(true))
   }
 }
 
