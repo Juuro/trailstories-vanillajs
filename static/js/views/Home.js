@@ -4,6 +4,7 @@ import { formatDate, readingTime, tags, getFeatureImage } from '../utilities.js'
 export class Home extends HTMLElement {
   constructor() {
     super()
+    // TODO: attachShadow in constructor or in connectedCallback?
     this.attachShadow({ mode: 'open' })
 
     this.template = document.createElement('template')
