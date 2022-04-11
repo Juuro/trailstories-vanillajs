@@ -7,6 +7,7 @@ export class Home extends HTMLElement {
     this.attachShadow({ mode: 'open' })
 
     this.template = document.createElement('template')
+    // TODO: How to share CSS between custom elements?
     this.template.innerHTML = `
       <style>
       a {
@@ -92,12 +93,13 @@ export class Home extends HTMLElement {
     let postPage = ''
 
     posts?.forEach((post) => {
+      // TODO: Article custom element!
       postPage = postPage.concat(`
         <article class="${post.custom_template ? post.custom_template : ""}">
           ${getFeatureImage(post)}
           <div class="text">
           <h2>
-              <a href="${post.slug}" data-link>${post.title}</a>
+              <a href="/${post.slug}" data-link>${post.title}</a>
           </h2>
           <div class="meta">
               <span class="date">${formatDate(post.published_at)}</span>

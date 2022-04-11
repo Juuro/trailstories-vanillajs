@@ -2,14 +2,14 @@ import { About } from "./views/about.js"
 import { Home } from "./views/Home.js"
 import { Imprint } from "./views/Imprint.js"
 import { Post } from "./views/Post.js"
-import Tag from "./views/Tag.js"
+import { Tag } from "./views/Tag.js"
 
 export const router = async () => {
   const routes = [
     {path: "/", view: 'home-view'},
     {path: "/about", view: 'about-view'},
     {path: "/imprint", view: 'imprint-view'},
-    {path: "/tag", view: Tag},
+    {path: "/tag", view: 'tag-view'},
     {path: "", view: 'post-view'},
   ]
 

@@ -98,7 +98,7 @@ export class Post extends HTMLElement {
 					${getFeatureImage(post)}
 					<div class="text">
 						<h2>
-							<a href="${post.slug}" data-link>${post.title}</a>
+							<a href="/${post.slug}" data-link>${post.title}</a>
 						</h2>
 						<div class="meta">
 							<span class="date">${formatDate(post.published_at)}</span>
