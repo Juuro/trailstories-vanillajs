@@ -10,10 +10,10 @@ const CACHED_URLS = [
   '/static/js/router.js',
   '/static/js/utilities.js',
   '/static/js/views/About.js',
-  '/static/js/views/AbstractView.js',
   '/static/js/views/Home.js',
   '/static/js/views/Imprint.js',
   '/static/js/views/Post.js',
+  '/static/js/views/Tag.js',
   '/static/js/components/Tag.js'
 ]
 

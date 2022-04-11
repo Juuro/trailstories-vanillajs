@@ -1,16 +1,16 @@
-import About from "./views/about.js"
-import Home from "./views/Home.js"
-import Imprint from "./views/Imprint.js"
-import Post from "./views/Post.js"
-import Tag from "./views/Tag.js"
+import { About } from "./views/about.js"
+import { Home } from "./views/Home.js"
+import { Imprint } from "./views/Imprint.js"
+import { Post } from "./views/Post.js"
+import { Tag } from "./views/Tag.js"
 
 export const router = async () => {
   const routes = [
-    {path: "/", view: Home},
-    {path: "/about", view: About},
-    {path: "/imprint", view: Imprint},
-    {path: "/tag", view: Tag},
-    {path: "", view: Post},
+    {path: "/", view: 'home-view'},
+    {path: "/about", view: 'about-view'},
+    {path: "/imprint", view: 'imprint-view'},
+    {path: "/tag", view: 'tag-view'},
+    {path: "", view: 'post-view'},
   ]
 
   const potentialMatches = routes.map(route => {
@@ -22,7 +22,7 @@ export const router = async () => {
 
   let match = potentialMatches.find(potentialMatch => potentialMatch.isMatch)
 
-  // TODO: Tries to load a post also when you try to load a URL/slug that doesn't exist. Fix it by loading an 404 page if the coresponding post doesn't exist.
+  // TODO: Tries to load a post also when you try to load a URL/slug that doesn't exist. Fix it by loading an 404 page if the corresponding post doesn't exist.
   if (!match) {
     match = {
       route: routes[4],
@@ -30,7 +30,7 @@ export const router = async () => {
     }
   }
 
-  const view = new match.route.view()
+  const view = match.route.view
 
   document.querySelector("main").innerHTML = `
     <article class="article-placeholder">
@@ -46,5 +46,6 @@ export const router = async () => {
       </div>
     </div>
   `
-  document.querySelector("main").innerHTML = await view.getHtml()
+
+  document.querySelector("main").innerHTML = document.createElement(view).outerHTML
 }

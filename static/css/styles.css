@@ -104,20 +104,6 @@ a:hover {
   color: #1c4442;
 }
 
-article {
-  background-color: var(--pastel-red);
-  color: var(--text-color);
-  margin: 3em auto;
-  width: 100%;
-  transform: skew(0, -3deg);
-  transition: box-shadow .2s;
-}
-
-article.article-placeholder {
-  border-radius: 0.2em;
-  animation: pulse 1.5s infinite ease-out;
-}
-
 @keyframes pulse {
   0% {
   }
@@ -129,57 +115,6 @@ article.article-placeholder {
   }
 }
 
-article.custom-bike-post {
-  box-shadow: -1em 1em var(--bike-post-color);
-}
-
-article:hover {
-  box-shadow: 0 0px 19px 0 var(--wine-red);
-}
-
-article img {
-  width: 100%;
-  max-width: 100%;
-  object-fit: cover;
-}
-
-article .text {
-  padding: 1em 1.5em;
-}
-
-article h2 {
-  color: var(--text-color);
-  font-size: 2.5em;
-  margin: 0em 0 0;
-}
-
-article h2 a {
-  color: inherit;
-  text-decoration: none;
-  transition: color .2s;
-}
-
-article h2 a:hover {
-  color: var(--text-color-hover);
-}
-
-article .meta {
-  color: var(--wine-red);
-  font-size: 0.8em;
-  display: flex;
-}
-
-article .meta span {
-  flex-grow: 1;
-}
-
-article .meta span:last-child {
-  text-align: right;
-}
-
-article main {
-  margin: 1em 0;
-}
 
 footer {
   background-color: var(--light-green);
@@ -191,18 +126,4 @@ footer {
 footer a {
   color: var(--dark-turquoise);
   font-weight: bold;
-}
-
-.tag-page-title {
-  color: var(--text-color);
-  text-align: center;
-}
-
-.tag-page-title tag-item {
-  font-size: 1.5rem;
-  vertical-align: middle;
-}
-
-.tag-page-title tag-item {
-  opacity: 1;
 }
