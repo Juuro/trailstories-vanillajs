@@ -29,11 +29,11 @@ window.addEventListener('popstate', router)
 document.addEventListener("DOMContentLoaded", () => {
   router()
 
-  const pagination = document.querySelector('.pagination')
-  pagination.addEventListener('click', async (event) => {
-    console.log(event)
-    // await loadPosts({ page: pagination.dataset.page })
-  })
+  // const pagination = document.querySelector('.pagination')
+  // pagination.addEventListener('click', async (event) => {
+  //   console.log(event)
+  //   // await loadPosts({ page: pagination.dataset.page })
+  // })
 
   document.body.addEventListener('click', event => {
     const origin = event.target.closest("a")
